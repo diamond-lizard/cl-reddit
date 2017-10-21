@@ -1,4 +1,29 @@
-#CL-REDDIT
+# EL-REDDIT
+
+Emacs Lisp Reddit API wrapper
+
+This will be an Emacs Lisp port of [cl-reddit](https://github.com/jperson/cl-reddit.git)
+
+## Status
+* **Pre-alpha**.
+* **WARNING** This is a brand new project.  **Nothing works** in Emacs Lisp yet.
+* No code changes done yet -- everything is still in Common Lisp.
+
+## Done
+* Looked over cl-reddit code.
+* Considered feasibility of port to Emacs Lisp.
+* Forked [cl-reddit](https://github.com/jperson/cl-reddit.git)
+
+## Todo
+* Plan port to Emacs Lisp
+* Implement plan
+
+
+Original cl-reddit README follows below:
+
+---
+
+# CL-REDDIT
 
 Common lisp reddit api wrapper
 
