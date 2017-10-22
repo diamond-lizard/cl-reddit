@@ -24,8 +24,14 @@
 ;; The views and conclusions contained in the software and documentation are those
 ;; of the authors and should not be interpreted as representing official policies,
 ;; either expressed or implied, of the FreeBSD Project.
+;;
+;; Function existence compatiblity check result: INCOMPATIBLE
+;; Elisp has no in-package function
 (in-package #:cl-reddit)
 
+;; Function existence compatibility check result: INCOMPATIBLE
+;; Elisp does not have defparameter
+;;----------------------------------------------------------
 ;;url escapes
 (defparameter *escape* '(#\$ #\& #\+ #\, #\/ #\: #\; #\= #\? #\@ #\space #\" #\< #\> #\# #\% #\{ #\} #\| #\\ #\^ #\~ #\[ #\] #\`))
 (defparameter *user-agent* "cl-reddit/0.2 (common lisp api wrapper)")
