@@ -13,11 +13,17 @@ This will be an Emacs Lisp port of [cl-reddit](https://github.com/jperson/cl-red
 * Looked over cl-reddit code.
 * Considered feasibility of port to Emacs Lisp.
 * Forked [cl-reddit](https://github.com/jperson/cl-reddit.git)
+* Documented [analysis phase of preliminary porting plan](https://github.com/diamond-lizard/el-reddit/wiki/Plan-for-Porting-cl-reddit-to-Emacs-Lisp)
+* Completed [preliminary analysis of cl-reddit files](https://github.com/diamond-lizard/el-reddit/wiki/cl-reddit-analysis)
 
 ## Todo
 * Plan port to Emacs Lisp
 * Implement plan
 
+## In progress
+* [Detailed analysis of cl-reddit files](https://github.com/diamond-lizard/el-reddit/wiki/cl-reddit-analysis)
+
+See [the wiki](https://github.com/diamond-lizard/el-reddit/wiki) for more information.
 
 Original cl-reddit README follows below:
 
