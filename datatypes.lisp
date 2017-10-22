@@ -24,8 +24,19 @@
 ;; The views and conclusions contained in the software and documentation are those
 ;; of the authors and should not be interpreted as representing official policies,
 ;; either expressed or implied, of the FreeBSD Project.
+;;
+;; Function existence compatiblity check result: INCOMPATIBLE
+;; Elisp has no in-package function
+;;----------------------------------------------------------
 (in-package #:cl-reddit)
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are completely eLisp compatible
+;;----------------------------------------------------------
 ;; Base classes
 (defclass thing ()
   ((id
@@ -41,6 +52,13 @@
      :initarg :data :initform nil :accessor thing-data
      :documentation "Custom data structure")))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are completely eLisp compatible
+;;----------------------------------------------------------
 (defclass listing ()
   ((before
      :initarg :before :initform "" :accessor listing-before :type (or null string)
@@ -55,6 +73,13 @@
      :initarg :children :initform nil :accessor listing-children
      :documentation "A list of things that this listing wraps")))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are completely eLisp compatible
+;;----------------------------------------------------------
 (defclass volatile ()
   ((ups
      :initarg :ups :initform 0 :accessor volatile-ups :type integer
@@ -66,12 +91,28 @@
      :initarg :likes :initform nil :accessor volatile-likes
      :documentation "True if liked by user, false if disliked, nil if user neutral")))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are completely eLisp compatible
+;;----------------------------------------------------------
 (defclass created ()
   ((created
      :initarg :created :initform 0 :accessor created-created)
    (created_utc
      :initarg :created_utc :initform 0 :accessor created-created_utc)))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: MOSTLY COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are mostly eLisp compatible.  I'm just not sure if eLisp has
+;; equivalents for the the "volatile" and "created" super classes
+;; this class inherits from.
+;;----------------------------------------------------------
 ;; Datastructures
 (defclass comment (volatile created)
   ((id
@@ -104,6 +145,15 @@
      :documentation "Comment replies."
      )))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: MOSTLY COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are mostly eLisp compatible.  I'm just not sure if eLisp has
+;; equivalents for the the "volatile" and "created" super classes
+;; this class inherits from.
+;;----------------------------------------------------------
 (defclass link (volatile created)
  ((id
     :initarg :id :initform "" :accessor link-id :type string
@@ -160,6 +210,15 @@
   (edited :initarg :edited :initform 0 :accessor link-edited :type (or boolean integer)
     :documentation "Indicates if link has been edited")))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: MOSTLY COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are mostly eLisp compatible.  I'm just not sure if eLisp has
+;; equivalents for the the "created" super class
+;; this class inherits from.
+;;----------------------------------------------------------
 (defclass subreddit (created)
  ((name
     :initarg :name :initform "" :accessor subreddit-name :type string)
@@ -192,6 +251,15 @@
     :initarg :url :initform "" :accessor subreddit-url :type string
     :documentation "The relative URL of the subreddit")))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: MOSTLY COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are mostly eLisp compatible.  I'm just not sure if eLisp has
+;; equivalents for the the "created" super class
+;; this class inherits from.
+;;----------------------------------------------------------
 (defclass message (created)
  ((author
     :initarg :author :initform "" :accessor message-author :type string)
@@ -218,6 +286,13 @@
   (was_comment
     :initarg :was_comment :initform nil :accessor message-was_comment :type boolean)))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are completely eLisp compatible
+;;----------------------------------------------------------
 (defclass account ()
  ((comment_karma
     :initarg :comment_karma :initform 0 :accessor account-comment_karma :type integer)
@@ -254,6 +329,13 @@
    (children
      :initarg :children :initform nil :accessor more-children)))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defclass
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way defclass is called here and all its arguments
+;; are completely eLisp compatible
+;;----------------------------------------------------------
 ;; User class
 (defclass user ()
   ((cookie
@@ -267,11 +349,25 @@
    (logged-in
      :initarg :logged-in :initform nil :accessor user-logged-in)))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defun and typecase
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way these functions are called here and all their arguments
+;; are completely eLisp compatible
+;;----------------------------------------------------------
 (defun maybe-round (x)
   (typecase x
     (number (round x))
     (t x)))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defun, gethash, and make-instance
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way these functions are called here and all their arguments
+;; are completely eLisp compatible
+;;----------------------------------------------------------
 ;; json to thing constructors
 (defun link-from-json (json)
   (make-instance
@@ -306,6 +402,12 @@
     :url (gethash "url" json)
     :edited (maybe-round (gethash "edited" json))))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defun, gethash, and make-instance
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way these functions are called here and all their arguments
+;; are completely eLisp compatible
 (defun subreddit-from-json (json)
   (make-instance
     'subreddit
@@ -326,6 +428,13 @@
     :header_title (gethash "header_title" json)
     :header_img (gethash "header_img" json)))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defun, gethash, make-instance, and typep
+;; parse-json and listing-children are defined in datatypes.lisp
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way these functions are called here and all their arguments
+;; are completely eLisp compatible
 (defun comment-from-json (json)
   (let ((replies (gethash "replies" json)))
     (make-instance
@@ -352,6 +461,12 @@
 ;      :replies replies)))
       ;:replies (first (children (parse-json (gethash "replies" json)))))))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defun, gethash, and make-instance
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way these functions are called here and all their arguments
+;; are completely eLisp compatible
 (defun account-from-json (json)
   (make-instance
     'account
@@ -367,6 +482,12 @@
     :modhash (gethash "modhash" json)
     :name (gethash "name" json)))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defun, gethash, and make-instance
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way these functions are called here and all their arguments
+;; are completely eLisp compatible
 (defun message-from-json (json)
   (make-instance
     'message
@@ -383,6 +504,12 @@
     :subreddit (gethash "subreddit" json)
     :was_comment (gethash "was_comment" json)))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defun, gethash, map, and make-instance
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way these functions are called here and all their arguments
+;; are completely eLisp compatible
 (defun listing-from-json (json)
   (make-instance
     'listing
@@ -391,6 +518,12 @@
     :modhash (gethash "modhash" json)
     :children (map 'list #'parse-json (gethash "children" json))))
 
+;; Function existence compatibility check result: COMPATIBLE
+;; Elisp has: defun, gethash, and make-instance
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way these functions are called here and all their arguments
+;; are completely eLisp compatible
 (defun more-from-json (json)
   (make-instance
     'more
@@ -400,6 +533,13 @@
     :name (gethash "name" json)
     :children (gethash "children" json)))
 
+;; Function existence compatibility check result: INCOMPATIBLE
+;; Elisp has: defun, gethash, labels, listp, loop, and make-instance
+;; eLisp does not have: alexandria:switch
+;;
+;; Function call syntax compatibility check result: COMPATIBLE
+;; The way compatible functions are called here and all their arguments
+;; are completely eLisp compatible
 (defun parse-json (data)
   (labels ((thing-from-json (json)
                (let ((kind (gethash "kind" json))
