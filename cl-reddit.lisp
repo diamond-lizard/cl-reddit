@@ -303,6 +303,10 @@
 ;; with-user and symbol-string are defined in util.lisp
 ;; parse-json is defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;; we should probably use "%s"
 ;;----------------------------------------------------------
 (defun get-message (user where)
   "Gets messages from inbox for user user.
@@ -317,6 +321,10 @@
 ;; build-get-params is defined in util.lisp
 ;; parse-json is defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;; we should probably use "%s"
 ;;----------------------------------------------------------
 (defun get-username-available (username)
   "Check if a username is available."
@@ -330,6 +338,10 @@
 ;; if-user-with is defined in util.lisp
 ;; parse-json and listing-children are defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;; we should probably use "%s"
 ;;----------------------------------------------------------
 ;;Listings
 (defun get-reddit (&optional (user nil))
@@ -344,6 +356,10 @@
 ;; if-user-with is defined in util.lisp
 ;; parse-json is defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;; we should probably use "%s"
 ;;----------------------------------------------------------
 (defun %get-subreddit (sub user)
   (let ((url (format nil "~a/r/~a.json" *reddit* sub)))
@@ -351,10 +367,12 @@
 
 ;; Function existence compatibility check result: COMPATIBLE
 ;; Elisp has: defun.
-;; NOTE: cl-defun should be used instead of defun, to set defaults values for optional arguments
 ;; if-user-with is defined in util.lisp
 ;; listing-children is defined in datatypes.lisp
 ;; %get-subreddit defined in cl-reddit.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; cl-defun should be used instead of defun, to set defaults values for optional arguments
 ;;----------------------------------------------------------
 (defun get-subreddit (sub &optional (user nil))
   "Gets json data for subreddit sub.  Optional user."
@@ -371,6 +389,10 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; Elisp has: defun and format.
 ;; get-subreddit defined in cl-reddit.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;; we should probably use "%s"
 ;;----------------------------------------------------------
 (defun get-subreddit-top (sub &optional user)
   "Gets json data for top posts in subreddit sub. Optional user usr."
@@ -389,6 +411,10 @@
 ;; with-user is defined in util.lisp
 ;; listing-children is defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;; we should probably use "%s"
 ;;----------------------------------------------------------
 (defun get-subscribed (user)
   "Gets subscribed subreddits"
@@ -402,6 +428,12 @@
 ;; with-user and param-push, and symbol-string are defined in util.lisp
 ;; listing-children and parse-json are defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;;   we should probably use "%s"
+;; eLisp has no &key keyword, and this needs to change to use
+;;   cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 (defun get-reddits-mine (user &key (where 'subscriber) after before count limit show target)
   "Gets listing of subreddits for user.
@@ -418,6 +450,12 @@
 ;; with-user, param-push, and symbol-string are defined in util.lisp
 ;; listing-children and parse-json are defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;;   we should probably use "%s"
+;; eLisp has no &key keyword, and this needs to change to use
+;;   cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 (defun get-reddits-where (user &key (where 'new) after before count limit show target)
   "Gets listing of subreddits for user.
@@ -434,6 +472,12 @@
 ;; if-user-with, param-push, and symbol-string are defined in util.lisp
 ;; listing-children and parse-json are defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;;   we should probably use "%s"
+;; eLisp has no &key keyword, and this needs to change to use
+;;   cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 (defun get-search (query &key user after before count limit restrict-sr show sort syntax time target sub)
   "Search for query."
@@ -452,6 +496,12 @@
 ;; if-user-with, param-push, and symbol-string are defined in util.lisp
 ;; listing-children and parse-json are defined in datatypes.lisp
 ;; get-json and build-get-params in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;;   we should probably use "%s"
+;; eLisp has no &key keyword, and this needs to change to use
+;;   cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 (defun get-comments (id user &key article comment context depth limit sort)
   "Gets comments for link id in subreddit sr."
