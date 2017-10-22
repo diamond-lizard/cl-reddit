@@ -21,7 +21,7 @@ This will be an Emacs Lisp port of [cl-reddit](https://github.com/jperson/cl-red
 * Implement plan
 
 ## In progress
-* [Detailed analysis of cl-reddit files](https://github.com/diamond-lizard/el-reddit/wiki/cl-reddit-analysis)
+* [Detailed compatibility analysis of cl-reddit files](https://github.com/diamond-lizard/el-reddit/wiki/cl-reddit-analysis)
 
 See [the wiki](https://github.com/diamond-lizard/el-reddit/wiki) for more information.
 
