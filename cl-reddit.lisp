@@ -33,6 +33,10 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; Elisp has: defun and let.
 ;; with-user is defined in util.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 (defun api-login (&key username password)
   "Login user username with password. Returns a User object with modhash,cookie set."
@@ -42,6 +46,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Sub or unsub from subreddit sr for user usr. Action can be 'sub or 'unsub"
 (def-post-api subscribe &key subreddit action)
@@ -49,6 +56,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Comments text on id with user."
 (def-post-api comment &key thing-id text)
@@ -56,6 +66,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Edit user text on id with user."
 (def-post-api editusertext &key thing-id text)
@@ -63,6 +76,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Vote direction dir for thing with id with user."
 (def-post-api vote &key id vote)
@@ -70,6 +86,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Save thing with id."
 (def-post-api save &key id)
@@ -77,6 +96,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Unsave thing with id."
 (def-post-api unsave &key id)
@@ -84,6 +106,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Report thing with id."
 (def-post-api report &key id)
@@ -91,6 +116,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Mark thing with id as nsfw."
 (def-post-api marknsfw &key id)
@@ -98,6 +126,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; Unmark thing with id
 (def-post-api unmarknsfw &key id)
@@ -105,6 +136,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Hide thing with id."
 (def-post-api hide &key id)
@@ -112,13 +146,19 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
-; "Unhide thing with id."
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
+; "Unhide thing with id."
 (def-post-api unhide &key id)
 
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Delete thing with id."
 (def-post-api del &key id)
@@ -126,6 +166,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Block thing with id."
 (def-post-api block &key id)
@@ -133,6 +176,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Read message with id."
 (def-post-api read_message &key id)
@@ -140,6 +186,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Unread message with id."
 (def-post-api unread_message &key id)
@@ -154,6 +203,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Self removal as moderator of thing with id."
 (def-post-api leavecontributor &key id)
@@ -161,6 +213,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Remove as moderator of subreddit with id."
 (def-post-api leavemoderator &key id)
@@ -168,6 +223,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Remove thing with id. Is-spam t if spam, nil if not."
 (def-post-api remove &key id spam)
@@ -175,6 +233,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 ; "Enable/disable flair."
 (def-post-api setflairenabled &key flair-enabled)
@@ -182,6 +243,9 @@
 ;; Function existence compatibility check result: COMPATIBLE
 ;; def-post-api is defined in util.
 ;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp has no &key keyword, and this needs to change to use
+;; cl-parsing-keywords and cl-keys
 ;;----------------------------------------------------------
 "Submit link to subreddit sr with text and title, only works if user has enough karma to avoid captcha."
 (def-post-api submit &key sr kind text title)
@@ -190,6 +254,10 @@
 ;; Elisp has: defun, let, and format.
 ;; with-user is defined in util.lisp
 ;; get-json is defined in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;; we should probably use "%s"
 ;;----------------------------------------------------------
 (defun api-me (user)
   "Get info for user usr.  Returns user data."
@@ -202,6 +270,10 @@
 ;; if-user-with is defined in util.lisp
 ;; parse-json is defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;; we should probably use "%s"
 ;;----------------------------------------------------------
 (defun get-user (r-user &optional (user nil))
   "Get /user/<r-user>.json.  Optional user user."
@@ -215,6 +287,10 @@
 ;; if-user-with is defined in util.lisp
 ;; parse-json is defined in datatypes.lisp
 ;; get-json in url.lisp
+;;
+;; Function call syntax compatibility check result: INCOMPATIBLE
+;; eLisp format function does not understand "~a".  Instead
+;; we should probably use "%s"
 ;;----------------------------------------------------------
 (defun get-about-user (about-user &optional (user nil))
   "Get /user/<about-user>/about.json.  Optional user user."
